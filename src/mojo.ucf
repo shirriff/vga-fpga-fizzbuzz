@@ -29,4 +29,8 @@ NET "spi_channel<3>" LOC = P65 | IOSTANDARD = LVTTL;
 NET "avr_tx" LOC = P55 | IOSTANDARD = LVTTL;
 NET "avr_rx" LOC = P59 | IOSTANDARD = LVTTL;
 NET "avr_rx_busy" LOC = P39 | IOSTANDARD = LVTTL;
-
+NET "pin_r" LOC = P50 | IOSTANDARD = LVTTL;
+NET "pin_g" LOC = P40 | IOSTANDARD = LVTTL;
+NET "pin_b" LOC = P34 | IOSTANDARD = LVTTL;
+NET "pin_hsync" LOC = P32 | IOSTANDARD = LVTTL;
+NET "pin_vsync" LOC = P29 | IOSTANDARD = LVTTL;
