@@ -1,9 +1,14 @@
 `timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
 // Character generator holding 8x8 character images.
 // Input char is a 4-bit character number representing:
 // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, B, F, i, z, <blank>
 // Input rownum is the desired row of the pixel image
 // Output pixels is the 8 pixel row, pixels[7] is leftmost.
+// Original font from https://github.com/dhepper/font8x8/blob/master/font8x8_basic.h
 module chars(
     input [3:0] char,
     input [2:0] rownum,
@@ -12,7 +17,6 @@ module chars(
 
 always @(*)
   case ({char, rownum})
-    
     7'b0000000: pixels = 8'b01111100; //  XXXXX  
     7'b0000001: pixels = 8'b11000110; // XX   XX 
     7'b0000010: pixels = 8'b11001110; // XX  XXX 
@@ -121,36 +125,33 @@ always @(*)
     7'b1011110: pixels = 8'b11110000; // XXXX    
     7'b1011111: pixels = 8'b00000000; //         
 
-    7'b1100000: pixels = 8'b01111000; //  XXXX   
-    7'b1100001: pixels = 8'b00110000; //   XX    
-    7'b1100010: pixels = 8'b00110000; //   XX    
-    7'b1100011: pixels = 8'b00110000; //   XX    
-    7'b1100100: pixels = 8'b00110000; //   XX    
-    7'b1100101: pixels = 8'b00110000; //   XX    
-    7'b1100110: pixels = 8'b01111000; //  XXXX   
-    7'b1100111: pixels = 8'b00000000; //         
+    7'b1100000: pixels = 8'b00110000; //   XX
+    7'b1100001: pixels = 8'b00000000; //
+    7'b1100010: pixels = 8'b01110000; //  XXX
+    7'b1100011: pixels = 8'b00110000; //   XX
+    7'b1100100: pixels = 8'b00110000; //   XX
+    7'b1100101: pixels = 8'b00110000; //   XX
+    7'b1100110: pixels = 8'b01111000; //  XXXX
+    7'b1100111: pixels = 8'b00000000; //
 
-    7'b1101000: pixels = 8'b11001100; // XX  XX  
-    7'b1101001: pixels = 8'b11001100; // XX  XX  
-    7'b1101010: pixels = 8'b11001100; // XX  XX  
-    7'b1101011: pixels = 8'b11001100; // XX  XX  
-    7'b1101100: pixels = 8'b11001100; // XX  XX  
-    7'b1101101: pixels = 8'b11001100; // XX  XX  
-    7'b1101110: pixels = 8'b11111100; // XXXXXX  
-    7'b1101111: pixels = 8'b00000000; //         
+    7'b1101000: pixels = 8'b00000000; //
+    7'b1101001: pixels = 8'b00000000; //
+    7'b1101010: pixels = 8'b11001100; // XX  XX
+    7'b1101011: pixels = 8'b11001100; // XX  XX
+    7'b1101100: pixels = 8'b11001100; // XX  XX
+    7'b1101101: pixels = 8'b11001100; // XX  XX
+    7'b1101110: pixels = 8'b01110110; //  XXX XX
+    7'b1101111: pixels = 8'b00000000; //
 
-    7'b1110000: pixels = 8'b11111110; // XXXXXXX 
-    7'b1110001: pixels = 8'b11000110; // XX   XX 
-    7'b1110010: pixels = 8'b10001100; // X   XX  
-    7'b1110011: pixels = 8'b00011000; //    XX   
-    7'b1110100: pixels = 8'b00110010; //   XX  X 
-    7'b1110101: pixels = 8'b01100110; //  XX  XX 
-    7'b1110110: pixels = 8'b11111110; // XXXXXXX 
-    7'b1110111: pixels = 8'b00000000; //         
-
-
+    7'b1110000: pixels = 8'b00000000; //
+    7'b1110001: pixels = 8'b00000000; //
+    7'b1110010: pixels = 8'b11111100; // XXXXXX
+    7'b1110011: pixels = 8'b10011000; // X  XX
+    7'b1110100: pixels = 8'b00110000; //   XX
+    7'b1110101: pixels = 8'b01100100; //  XX  X
+    7'b1110110: pixels = 8'b11111100; // XXXXXX
+    7'b1110111: pixels = 8'b00000000; //
+    
     default: pixels = 8'b00000000;
   endcase
-
-
 endmodule
